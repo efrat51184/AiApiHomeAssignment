@@ -1,0 +1,10 @@
+aiofiles
+asyncio
+GitPython
+openai
+pinecone-client
+fastapi
+uvicorn
+PyYAML
+pytest
+pytest-asyncio
