@@ -2,8 +2,8 @@ from fastapi import APIRouter, HTTPException
 from pathlib import Path
 import asyncio
 
+from AiApiHomeAssignment.src.core.vectorestore import VectorStore
 from src.core.repository import clone_repository, process_files
-from src.core.vectorstore import VectorStore
 from src.core.assistant import Assistant
 from src.utils.config import Config
 

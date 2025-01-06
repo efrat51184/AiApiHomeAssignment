@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import AsyncMock, patch
-from src.core.vectorstore import VectorStore
+from AiApiHomeAssignment.src.core.vectorestore import VectorStore
 
 @pytest.mark.asyncio
 async def test_generate_embedding():
