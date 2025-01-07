@@ -8,3 +8,7 @@ uvicorn
 PyYAML
 pytest
 pytest-asyncio
+cryptography
+python-dotenv
+python-magic
+
