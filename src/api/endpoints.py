@@ -1,15 +1,18 @@
 from fastapi import APIRouter, HTTPException
 from pathlib import Path
 import asyncio
-
-from AiApiHomeAssignment.src.core.vectorestore import VectorStore
-from src.core.repository import clone_repository, process_files
-from src.core.assistant import Assistant
-from src.utils.config import Config
+import sys
+import os
+# Add the project root directory to the system path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
+from core.vectorestore import VectorStore
+from core.repository import clone_repository, process_files
+from core.assistant import Assistant
+from utils.config import Config
 
 router = APIRouter()
 
-config = Config(Path('../config/config.yaml'))
+config = Config(Path('../../config/config.yaml'))
 vector_store = VectorStore(
     pinecone_config=config.get_pinecone_config(),
     openai_api_key=config.get_openai_api_key()

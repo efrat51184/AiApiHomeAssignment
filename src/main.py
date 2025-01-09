@@ -1,8 +1,8 @@
 import asyncio
 from fastapi import FastAPI
 import uvicorn
-from AiApiHomeAssignment.src.api.endpoints import router
-from AiApiHomeAssignment.src.utils.async_utils import shutdown
+from api.endpoints import router
+from utils.async_utils import shutdown
 import signal
 
 app = FastAPI()

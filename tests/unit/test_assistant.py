@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import AsyncMock, patch
 from src.core.assistant import Assistant
 
+
 @pytest.mark.asyncio
 async def test_analyze_code():
     assistant = Assistant(openai_api_key="test_key")

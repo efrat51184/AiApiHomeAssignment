@@ -23,7 +23,7 @@ async def process_files(repo_path: Path, max_tokens: int = 1000) -> list[str]:
     """Process files in the repository asynchronously and return chunks."""
     tasks = []
     for file_path in repo_path.rglob('*'):
-        if file_path.is_file() and is_supported_file(file_path):  # בדיקה אם סוג הקובץ נתמך
+        if file_path.is_file() and is_supported_file_mine_type(file_path):  # check supported files
             tasks.append(process_file(file_path, max_tokens))
     
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -64,13 +64,13 @@ def chunk_text(text: str, max_tokens: int = 1000) -> list[str]:
     return chunks
 
 
-def is_supported_file(file_path: Path) -> bool:
-    """Check if a file is of a supported type with mine_type."""
+def is_supported_file_mine_type(file_path: Path) -> bool:
+    """option 1 - Check if a file is of a supported type with mine_type"""
     mime_type, _ = mimetypes.guess_type(file_path)
     if mime_type:
-        # רשימת סוגי קבצים נתמכים (אפשר להרחיב)
+        # supported files
         supported_mime_types = [
-            "text/plain",       # קבצי טקסט
+            "text/plain",       # text files
             "application/json", # JSON
             "application/javascript", # JavaScript
             "text/x-python",    # Python
@@ -80,8 +80,8 @@ def is_supported_file(file_path: Path) -> bool:
     return False
 
 
-def is_supported_file(file_path: Path) -> bool:
-    """Check if a file is of a supported type using python-magic."""
+def is_supported_file_magic(file_path: Path) -> bool:
+    """option 2 - Check if a file is of a supported type using python-magic"""
     mime = magic.Magic(mime=True)
     mime_type = mime.from_file(str(file_path))
     supported_mime_types = [

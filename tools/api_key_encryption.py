@@ -2,6 +2,12 @@ from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 import os
 
+
+"""
+Nice to have 
+Under improvements label
+"""
+
 def encrypt_api_key():
     """
     Encrypt the API key stored in the .env file and save the encrypted key and encryption key to files.
